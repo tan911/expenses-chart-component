@@ -1,0 +1,18 @@
+@use '../base/typography' as font;
+
+body {
+  font-family: customFontReg, sans-serif;
+  background-color: var(--colors-neutral-cream);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+main {
+  //   border: 1px solid red;
+  width: 100%;
+  max-width: 31.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}

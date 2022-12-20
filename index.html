@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="shortcut icon"
+      href="./assets/images/favicon-32x32.png"
+      type="image/x-icon"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <title>Frontendmentor | Expense chart</title>
+  </head>
+  <body>
+    <main>
+      <div class="head__container">
+        <div>
+          <p>my balance</p>
+          <h2>$921.48</h2>
+        </div>
+        <svg
+          width="72"
+          height="48"
+          viewBox="0 0 72 48"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <g fill="none" fill-rule="evenodd">
+            <circle fill="#382314" cx="48" cy="24" r="24" />
+            <circle stroke="#FFF" stroke-width="2" cx="24" cy="24" r="23" />
+          </g>
+        </svg>
+      </div>
+      <div class="board">
+        <h1 class="board__title">Spending - Las 7 days</h1>
+        <canvas id="chart" class="board__chart"></canvas>
+      </div>
+    </main>
+    <script type="module" src="./js/app.js"></script>
+  </body>
+</html>

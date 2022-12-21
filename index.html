@@ -15,9 +15,9 @@
   <body>
     <main>
       <div class="head__container">
-        <div>
-          <p>my balance</p>
-          <h2>$921.48</h2>
+        <div class="head__container__balance">
+          <p class="name">My balance</p>
+          <h2 class="head__balance">$921.48</h2>
         </div>
         <svg
           width="72"
@@ -32,10 +32,138 @@
         </svg>
       </div>
       <div class="board">
-        <h1 class="board__title">Spending - Las 7 days</h1>
-        <canvas id="chart" class="board__chart"></canvas>
+        <h2 class="board__title" id="title">Spending - Last 7 days</h2>
+        <canvas
+          id="chart"
+          class="board__chart"
+          aria-label="title"
+          role="img"
+        ></canvas>
+        <hr class="board__line" />
+        <div>
+          <p class="name__total">Total this month</p>
+          <div class="name__summary">
+            <h1>$<span>478.33</span></h1>
+            <div>
+              <p class="name__percentage">+2.4%</p>
+              <p class="name__total">from last month</p>
+            </div>
+          </div>
+        </div>
       </div>
     </main>
-    <script type="module" src="./js/app.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+      const canvas = document.querySelector('#chart');
+
+      Chart.defaults.defaultFontFamily = 'DM Sans';
+      Chart.defaults.font.size = 15;
+
+      const customTooltip = {
+        caretSize: '',
+        backgroundColor: '#382314',
+        yAlign: 'bottom',
+        displayColors: false,
+        padding: 7.2,
+        bodyFont: {
+          font: 'DM Sans',
+          size: 15,
+        },
+        callbacks: {
+          title: function (context) {
+            return '';
+          },
+          label: function (context) {
+            let label = context.dataset.raw || '';
+            if (label) {
+              label += ': ';
+            }
+            if (context.parsed.y !== null) {
+              label += new Intl.NumberFormat('en-US', {
+                style: 'currency',
+                currency: 'USD',
+              }).format(context.parsed.y);
+            }
+            return label;
+          },
+        },
+      };
+
+      async function init() {
+        const path = '../data/data.json';
+        const resp = await fetch(path);
+        const data = await resp.json();
+
+        const currentDay = data.map((item, index) => {
+          const d = new Date();
+          let day = d.getDay();
+
+          if (index + 1 === day) {
+            return '#76b5bc';
+          } else {
+            return '#ec775f';
+          }
+        });
+
+        new Chart(canvas, {
+          type: 'bar',
+          data: {
+            labels: data.map((row) => row.day),
+            datasets: [
+              {
+                data: data.map((row) => row.amount),
+                backgroundColor: currentDay,
+                borderRadius: 4,
+                borderSkipped: false,
+                // barPercentage: 2,
+                // categoryPercentage: 1.0,
+              },
+            ],
+          },
+          options: {
+            plugins: {
+              legend: {
+                display: false,
+              },
+              tooltip: customTooltip,
+            },
+            scales: {
+              y: {
+                ticks: {
+                  padding: 0,
+                  display: false,
+                },
+                grid: {
+                  display: false,
+                },
+                border: {
+                  display: false,
+                },
+              },
+              x: {
+                grid: {
+                  display: false,
+                },
+                border: {
+                  display: false,
+                },
+              },
+            },
+            layout: {
+              padding: {
+                top: 25,
+                left: 0,
+                bottom: 0,
+                right: 0,
+              },
+            },
+          },
+        });
+      }
+
+      // console.log(Chart.defaults.scales);
+
+      init();
+    </script>
   </body>
 </html>

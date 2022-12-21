@@ -7,8 +7,42 @@
   border-radius: var(--b-radius);
 }
 
+.head__container__balance {
+  color: var(--colors-neutral-pale-orange);
+}
+
+.head__balance {
+  font-weight: 700;
+}
+
 .board {
   background-color: var(--colors-neutral-pale-orange);
   padding: var(--gut-inside);
   border-radius: var(--b-radius);
+}
+
+.board__title {
+  color: var(--colors-neutral-db);
+  font-weight: bold;
+  // margin-bottom: 1rem;
+}
+
+.board__line {
+  margin: 2rem 0;
+  height: 1px;
+  width: 100%;
+  color: var(--colors-neutral-pale-orange);
+}
+
+.name__summary {
+  display: flex;
+  justify-content: space-between;
+}
+
+.name__percentage {
+  text-align: right;
+}
+
+.name__total {
+  color: var(--colors-neutral-mb);
 }

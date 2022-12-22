@@ -61,8 +61,7 @@
     </main>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
-      const canvas = document.querySelector('#chart');
-      console.log(canvas.height);
+      const canvas = document.getElementById('chart');
 
       Chart.defaults.defaultFontFamily = 'DM Sans';
       Chart.defaults.color = '#60A5FA';
@@ -103,75 +102,79 @@
       };
 
       async function init() {
-        const path = '../data/data.json';
-        const resp = await fetch(path);
-        const data = await resp.json();
+        try {
+          const path = '../data/data.json';
+          const resp = await fetch(path);
+          const data = await resp.json();
 
-        const currentDay = data.map((item, index) => {
-          const d = new Date();
-          let day = d.getDay();
+          const currentDay = data.map((item, index) => {
+            const d = new Date();
+            let day = d.getDay();
 
-          if (index + 1 === day) {
-            return '#F43F5E';
-          } else {
-            return '#A78BFA';
-          }
-        });
+            if (index + 1 === day) {
+              return '#F43F5E';
+            } else {
+              return '#A78BFA';
+            }
+          });
 
-        new Chart(canvas, {
-          type: 'bar',
-          data: {
-            labels: data.map((row) => row.day),
-            datasets: [
-              {
-                data: data.map((row) => row.amount),
-                backgroundColor: currentDay,
-                borderRadius: 4,
-                borderSkipped: false,
-                // barPercentage: 2,
-                // categoryPercentage: 1.0,
-              },
-            ],
-          },
-          options: {
-            plugins: {
-              legend: {
-                display: false,
-              },
-              tooltip: customTooltip,
+          new Chart(canvas, {
+            type: 'bar',
+            data: {
+              labels: data.map((row) => row.day),
+              datasets: [
+                {
+                  data: data.map((row) => row.amount),
+                  backgroundColor: currentDay,
+                  borderRadius: 4,
+                  borderSkipped: false,
+                  // barPercentage: 2,
+                  // categoryPercentage: 1.0,
+                },
+              ],
             },
-            scales: {
-              y: {
-                ticks: {
-                  padding: 0,
+            options: {
+              plugins: {
+                legend: {
                   display: false,
                 },
-                grid: {
-                  display: false,
+                tooltip: customTooltip,
+              },
+              scales: {
+                y: {
+                  ticks: {
+                    padding: 0,
+                    display: false,
+                  },
+                  grid: {
+                    display: false,
+                  },
+                  border: {
+                    display: false,
+                  },
                 },
-                border: {
-                  display: false,
+                x: {
+                  grid: {
+                    display: false,
+                  },
+                  border: {
+                    display: false,
+                  },
                 },
               },
-              x: {
-                grid: {
-                  display: false,
-                },
-                border: {
-                  display: false,
+              layout: {
+                padding: {
+                  top: 25,
+                  left: 0,
+                  bottom: 0,
+                  right: 0,
                 },
               },
             },
-            layout: {
-              padding: {
-                top: 25,
-                left: 0,
-                bottom: 0,
-                right: 0,
-              },
-            },
-          },
-        });
+          });
+        } catch (error) {
+          console.log(error);
+        }
       }
 
       init();

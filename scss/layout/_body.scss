@@ -1,18 +1,23 @@
 @use '../base/typography' as font;
+@use '../base/mixin' as response;
 
 body {
   font-family: customFontReg, sans-serif;
-  background-color: var(--colors-neutral-cream);
+  // background-color: var(--colors-neutral-cream);
+  background-image: var(--gradient);
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 main {
-  //   border: 1px solid red;
-  width: 100%;
+  width: 90%;
   max-width: 31.25rem;
   display: flex;
   flex-direction: column;
   gap: 1rem;
+
+  @include response.respond(phone) {
+    width: 100%;
+  }
 }

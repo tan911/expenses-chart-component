@@ -1,5 +1,8 @@
+@use '../base/mixin' as animate;
+
 .head__container {
-  background-color: var(--colors-primary-orange);
+  // background-color: var(--colors-primary-orange);
+  background-color: var(--colors-secondary-pale-orange);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -12,19 +15,27 @@
 }
 
 .head__balance {
-  font-weight: 700;
+  background-image: var(--gradient);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  background-size: 400%;
+  @include animate.animate-text;
+}
+
+.amount {
+  @include animate.animate-text-2;
+}
+
+svg {
+  width: 20%;
 }
 
 .board {
-  background-color: var(--colors-neutral-pale-orange);
+  // background-color: var(--colors-neutral-pale-orange);
+  background-color: var(--colors-secondary-pale-orange);
   padding: var(--gut-inside);
   border-radius: var(--b-radius);
-}
-
-.board__title {
-  color: var(--colors-neutral-db);
-  font-weight: bold;
-  // margin-bottom: 1rem;
 }
 
 .board__line {
@@ -32,17 +43,19 @@
   height: 1px;
   width: 100%;
   color: var(--colors-neutral-pale-orange);
+  opacity: 0.2;
 }
 
-.name__summary {
+.board__summary {
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
-.name__percentage {
+.board__percentage {
   text-align: right;
 }
 
-.name__total {
-  color: var(--colors-neutral-mb);
+.board__total {
+  color: var(--colors-secondary-neutral-mb);
 }

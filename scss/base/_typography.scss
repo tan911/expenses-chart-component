@@ -7,3 +7,34 @@
   font-family: customFontBold;
   src: url('../../assets/font/DMSans-Bold.ttf');
 }
+
+p {
+  font-size: var(--font-size-xs);
+}
+
+.head__balance {
+  font-size: var(--font-size-s);
+  font-weight: 700;
+}
+
+.board__title,
+.board__amount,
+.board__percentage {
+  // color: var(--colors-neutral-db);
+  color: var(--colors-secondary-neutral-cream);
+}
+
+.board__title {
+  font-weight: bold;
+  font-size: var(--font-size-m);
+}
+
+.board__amount {
+  font-size: var(--font-size-l);
+  font-family: customFontBold, sans-serif;
+}
+
+.board__percentage {
+  font-size: var(--font-size-xs);
+  font-weight: bold;
+}

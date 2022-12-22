@@ -19,6 +19,7 @@
           <p class="name">My balance</p>
           <h2 class="head__balance">$921.48</h2>
         </div>
+
         <svg
           width="72"
           height="48"
@@ -26,13 +27,15 @@
           xmlns="http://www.w3.org/2000/svg"
         >
           <g fill="none" fill-rule="evenodd">
-            <circle fill="#382314" cx="48" cy="24" r="24" />
-            <circle stroke="#FFF" stroke-width="2" cx="24" cy="24" r="23" />
+            <circle fill="#F43F5E" cx="48" cy="24" r="24" />
+            <circle stroke="#F43F5E" stroke-width="2" cx="24" cy="24" r="23" />
           </g>
         </svg>
       </div>
       <div class="board">
-        <h2 class="board__title" id="title">Spending - Last 7 days</h2>
+        <h2 id="title" class="board__title amount" style="--i: 1">
+          Spending - Last 7 days
+        </h2>
         <canvas
           id="chart"
           class="board__chart"
@@ -41,12 +44,14 @@
         ></canvas>
         <hr class="board__line" />
         <div>
-          <p class="name__total">Total this month</p>
-          <div class="name__summary">
-            <h1>$<span>478.33</span></h1>
+          <p class="board__total">Total this month</p>
+          <div class="board__summary">
+            <h1 class="board__amount amount" style="--i: 2">
+              $<span class="board__total__amount amount">478.33</span>
+            </h1>
             <div>
-              <p class="name__percentage">+2.4%</p>
-              <p class="name__total">from last month</p>
+              <p class="board__percentage amount" style="--i: 3">+2.4%</p>
+              <p class="board__total">from last month</p>
             </div>
           </div>
         </div>
@@ -55,13 +60,19 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
       const canvas = document.querySelector('#chart');
+      console.log(canvas.height);
 
       Chart.defaults.defaultFontFamily = 'DM Sans';
+      Chart.defaults.color = '#60A5FA';
       Chart.defaults.font.size = 15;
+
+      if (window.screen.width <= 400) {
+        canvas.height = 200;
+      }
 
       const customTooltip = {
         caretSize: '',
-        backgroundColor: '#382314',
+        backgroundColor: '#F43F5E',
         yAlign: 'bottom',
         displayColors: false,
         padding: 7.2,
@@ -99,9 +110,9 @@
           let day = d.getDay();
 
           if (index + 1 === day) {
-            return '#76b5bc';
+            return '#F43F5E';
           } else {
-            return '#ec775f';
+            return '#A78BFA';
           }
         });
 
@@ -160,8 +171,6 @@
           },
         });
       }
-
-      // console.log(Chart.defaults.scales);
 
       init();
     </script>

@@ -1,0 +1,46 @@
+@mixin respond($breakpoint) {
+  @if $breakpoint == phone {
+    @media only screen and (min-width: 37.5em) {
+      @content;
+    }
+  }
+}
+
+@mixin animate-text {
+  animation-name: animate-text-bg;
+  animation-duration: calc(var(--duration) * 5);
+  animation-timing-function: var(--transition-easing);
+  animation-fill-mode: both;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+
+  @keyframes animate-text-bg {
+    from {
+      background-position: left;
+    }
+
+    to {
+      background-position: right;
+    }
+  }
+}
+
+@mixin animate-text-2 {
+  animation-name: slide-up;
+  animation-duration: var(--duration);
+  animation-timing-function: var(--transition-easing);
+  animation-delay: calc(var(--interval) * var(--i));
+  animation-fill-mode: both;
+
+  @keyframes slide-up {
+    from {
+      opacity: 0;
+      transform: translateY(20%);
+    }
+
+    to {
+      opacity: none;
+      transform: none;
+    }
+  }
+}

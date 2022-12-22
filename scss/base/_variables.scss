@@ -6,6 +6,24 @@
   --colors-neutral-cream: hsl(27, 66%, 92%);
   --colors-neutral-pale-orange: hsl(33, 100%, 98%);
 
+  --colors-secondary-orange: hsl(255, 92%, 76%);
+  --colors-secondary-cyan: hsl(350, 89%, 60%);
+  --colors-secondary-neutral-mb: hsl(213, 94%, 68%);
+  --colors-secondary-neutral-cream: hsl(156, 72%, 67%);
+  --colors-secondary-pale-orange: hsl(0, 0%, 18%);
+
+  --duration: 1s;
+  --transition-easing: cubic-bezier(0.5, 0, 0.5, 1);
+  --stagger: 0.5s;
+  --interval: calc(var(var(--duration) - var(var(--stagger))));
+
+  --gradient: linear-gradient(40deg, #a689fa, #ff512f, #dd2476);
+
+  --font-size-xs: clamp(0.938rem, calc(0.125vw + 0.891rem), 1rem);
+  --font-size-s: clamp(1.5rem, calc(0.6vw + 1.275rem), 1.8rem);
+  --font-size-m: clamp(1.3rem, calc(1.4vw + 0.775rem), 2rem);
+  --font-size-l: clamp(1.8rem, calc(1.4vw + 1.275rem), 2.5rem);
+
   --b-radius: 15px;
-  --gut-inside: 1.5rem;
+  --gut-inside: 1.2rem;
 }

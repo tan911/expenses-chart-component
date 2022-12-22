@@ -103,7 +103,7 @@
 
       async function init() {
         try {
-          const path = '../data/data.json';
+          const path = './data/data.json';
           const request = new Request(path);
           const resp = await fetch(request);
           const data = await resp.json();

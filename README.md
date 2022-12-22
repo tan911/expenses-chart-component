@@ -35,7 +35,7 @@ Users should be able to:
 ### Links
 
 - Solution URL: [Code](https://github.com/tan911/expenses-chart-component)
-- Live Site URL: [Livesite](https://your-live-site-url.com)
+- Live Site URL: [Livesite](https://tan911.github.io/expenses-chart-component/)
 
 ## My process
 

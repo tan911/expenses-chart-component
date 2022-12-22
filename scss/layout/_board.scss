@@ -1,4 +1,5 @@
 @use '../base/mixin' as animate;
+@use '../base/mixin' as response;
 
 .head__container {
   // background-color: var(--colors-primary-orange);
@@ -8,6 +9,10 @@
   align-items: center;
   padding: var(--gut-inside);
   border-radius: var(--b-radius);
+
+  @include response.respond(phone) {
+    padding: var(--gut-inside-x);
+  }
 }
 
 .head__container__balance {
@@ -36,6 +41,10 @@ svg {
   background-color: var(--colors-secondary-pale-orange);
   padding: var(--gut-inside);
   border-radius: var(--b-radius);
+
+  @include response.respond(phone) {
+    padding: var(--gut-inside-x);
+  }
 }
 
 .board__line {
